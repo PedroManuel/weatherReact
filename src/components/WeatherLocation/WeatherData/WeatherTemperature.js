@@ -7,7 +7,8 @@ import {
         SUN, 
         RAIN, 
         SNOW, 
-        WINDY } from '../constants/weathers';
+        WINDY,THUNDER, DRIZZLE } from '../../../constants/weathers';
+import './styles.css';
 
 const stateToIconName = weatherstate => {
     switch (weatherstate){
@@ -23,19 +24,23 @@ const stateToIconName = weatherstate => {
             return 'snow';
         case WINDY:  
             return 'windy';
+        case THUNDER:  
+            return 'day-thunderstorm';
+        case DRIZZLE:  
+            return 'day-showers';
         default:
             return 'day-sunny';
     }
 };
-const getWeatherIcon = weatherstate => {
-    return (<WeatherIcons name={stateToIconName(weatherstate)} size="2x"/>)
+const getWeatherIcon = weatherState => {
+    return (<WeatherIcons className='wicon' name={stateToIconName(weatherState)} size="3x"/>)
 };
 
-const WeatherTemperature = ({temperature, weatherstate}) => (
-    <div>
-        {getWeatherIcon(weatherstate)}
-        <span>{`${temperature} Cº`}</span>
-        <span>{`${weatherstate} wind`}</span>
+const WeatherTemperature = ({temperature, weatherState}) => (
+    <div className='weatherTemperatureInfoCont'>
+        {getWeatherIcon(weatherState)}
+        <span className='temperature'>{`${temperature}`}</span>
+        <span className='temperaturetype'>Cº</span>
     </div>
 );
 
