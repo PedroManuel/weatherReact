@@ -3,3 +3,26 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.green {
+  background: green;
+  height: 100px;
+  min-width: 50px;
+}
+
+.blue{
+  background: blue;
+  height: 100px;
+  min-width: 50px;
+}
+
+.red{
+  background: red;
+  height: 100px;
+  min-width: 50px;
+}
+
+.yellow{
+  background: yellow;
+  height: 100px;
+  min-width: 50px;
+}
