@@ -30,7 +30,7 @@ class WeatherLocation extends Component{
             return data.json();
         }).then(weather_data =>{
             const data = transformWeather(weather_data);
-            this.setState({data});
+            this.setState({data}); /* Esto provoca otro evento Render */
            
         }) ;
     }

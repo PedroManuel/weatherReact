@@ -8,6 +8,7 @@
     font-family: 'Roboto', sans-serif;
     box-shadow: 10px 10px 42px -12px;
     background: rgba(249, 249, 255, 0.89);
+    cursor: pointer;
 }
 .LocationCont{
     
