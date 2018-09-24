@@ -31,21 +31,32 @@ class ForecastExtended extends Component{
     }
 
     componentDidMount(){
-        // fetch or axios opción para ser soportado por mas navegadores
-        const url_forecast = `${url}?q=${this.props.city}&appid=${api_key}`;
-
-        fetch(url_forecast).then(
-            data => (data.json())
-        ).then(
-            weather_data =>{
-                console.log(weather_data);
-                const forecastData = transformForecast(weather_data);
-                console.log(forecastData);
-                this.setState({forecastData});
-            }
-        );
-
+        this.updateCity(this.props.city);
     }
+
+    componentWillReceiveProps(nextProps){
+        if (nextProps.city !== this.props.city){
+            this.setState(({forecastData:null}))
+            this.updateCity(nextProps.city);
+        }
+    }
+    updateCity = city =>{
+                // fetch or axios opción para ser soportado por mas navegadores
+                const url_forecast = `${url}?q=${city}&appid=${api_key}`;
+                console.log("CIUDADA:" + city);
+            
+                fetch(url_forecast).then(
+                    data => (data.json())
+                ).then(
+                    weather_data =>{
+                        console.log(weather_data);
+                        const forecastData = transformForecast(weather_data);
+                        console.log(forecastData);
+                        this.setState({forecastData});
+                    }
+                );
+    }
+    
     renderForecastItemDays(forecastData){
         return forecastData.map(forecast => (
             <ForecastItem 
